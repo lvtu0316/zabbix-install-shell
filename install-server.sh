@@ -7,6 +7,7 @@ if [ $(id -u) != "0" ]; then
     echo "Error: You must be root to run this script, please use root to install "
     exit 1
 fi
+cur_dir=$(pwd)
 #确认mysql_config 位置，如果mysql为默认安装，则为/usr/bin/mysql_config
 mysql_config=/usr/local/mysql/bin/mysql_config
 #确认net-snmp-config位置，默认安装为/usr/bin/net-snmp-config
@@ -97,6 +98,6 @@ END
 
 #复制微软雅黑字体，修改支持中文
 cp msyh.ttf /home/wwwroot/zabbix/assets/fonts/
-cp zabbix-nginx.conf /usr/local/nginx/conf/vhost
+cp $cur_dir/zabbix-nginx.conf /usr/local/nginx/conf/vhost
 nginx -s reload
 
